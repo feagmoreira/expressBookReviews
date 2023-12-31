@@ -57,18 +57,18 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
     if (reviews.length > 0){
         if (reviews["username"]){
             books[isbn]["reviews"][username] = review;
-            res.send("Review updated for user")
+            res.send(`Review added for the book with ISBN ${isbn}`)
         }
         else{
             reviews[username] = review;
             books[isbn]["reviews"] = reviews;
-            res.send("Review added")
+            res.send(`Review added for the book with ISBN ${isbn}`)
         }
     }
     else{
         reviews[username] = review;
         books[isbn]["reviews"] = reviews;
-        res.send("Review added")
+        res.send(`Review added for the book with ISBN ${isbn}`)
     }
   }
   return res.status(404).json({message: "Information Missing! Review not added"});
